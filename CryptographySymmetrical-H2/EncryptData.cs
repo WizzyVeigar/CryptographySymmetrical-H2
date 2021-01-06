@@ -128,9 +128,16 @@ namespace CryptographySymmetrical_H2
 
             algorithm.Mode = CipherMode.CBC;
             algorithm.Padding = PaddingMode.PKCS7;
-
-            algorithm.Key = key;
-            algorithm.IV = iv;
+            try
+            {
+                algorithm.Key = key;
+                algorithm.IV = iv;
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("Make sure to use the correct encryption method");
+                throw e;
+            }
 
             using (var memoryStream = new MemoryStream())
             {
