@@ -45,6 +45,12 @@ namespace CryptographySymmetrical_H2
             EncryptFolder(encrypter, key, iv);
         }
 
+        /// <summary>
+        /// Method for encrypting txt files in current directory
+        /// </summary>
+        /// <param name="encrypter">Method for encryption</param>
+        /// <param name="key">The key used to encrypt with</param>
+        /// <param name="iv">The iv used to encrypt with</param>
         public static void EncryptFolder(Encrypters encrypter, byte[] key, byte[] iv)
         {
             watch = new Stopwatch();
@@ -86,9 +92,10 @@ namespace CryptographySymmetrical_H2
                 }
 
                 watch.Stop();
-                Console.WriteLine("Stopwatch took: " + watch.ElapsedMilliseconds + " to complete");
-                Console.WriteLine("Key:" + algorithm.Key + "\n" +
-                    "IV: " + algorithm.IV);
+                Console.WriteLine("Stopwatch took: " + watch.ElapsedMilliseconds + "ms to complete \n" +
+                    "Remember to save the key and IV somewhere");
+                Console.WriteLine("Key:" + Convert.ToBase64String(algorithm.Key) + "\n" +
+                    "IV: " + Convert.ToBase64String(algorithm.IV));
             }
         }
 
@@ -140,7 +147,7 @@ namespace CryptographySymmetrical_H2
                 }
 
                 watch.Stop();
-                Console.WriteLine("Stopwatch took " + watch.ElapsedMilliseconds + " to decrypt");
+                Console.WriteLine("Stopwatch took " + watch.ElapsedMilliseconds + "ms to decrypt");
             }
         }
 
